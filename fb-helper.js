@@ -6,12 +6,14 @@ Author - Alex Grande
 */
 
 (function(window, document, console) {
+  var FB;
   var Facebook = window.Facebook = function(callback) {
 
-      window.fbAsyncInit = function() {
+      window.fbAsyncInit = function(appId, channelUrl) {
+        FB = window.FB;
         FB.init({
-          appId: '', // App ID
-          channelUrl: '', // Channel File
+          appId: appId, // App ID
+          channelUrl: channelUrl, // Channel File
           status: true, // check login status
           cookie: true, // enable cookies to allow the server to access the session
           xfbml: true,  // parse XFBML
@@ -52,7 +54,7 @@ Author - Alex Grande
   };
   
   Facebook.prototype.getUser = function(callback) {
-    window.FB.api('/me', function(response) {
+    FB.api('/me', function(response) {
         response.authResponse = {};
         response.authResponse.accessToken = FB.getAccessToken();
         
