@@ -7,9 +7,9 @@ Author - Alex Grande
 
 (function(window, document, console) {
   var FB;
-  var Facebook = window.Facebook = function(callback) {
+  var Facebook = window.Facebook = function(appId, channelUrl, callback) {
 
-      window.fbAsyncInit = function(appId, channelUrl) {
+      window.fbAsyncInit = function() {
         FB = window.FB;
         FB.init({
           appId: appId, // App ID
